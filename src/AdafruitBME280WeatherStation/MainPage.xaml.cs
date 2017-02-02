@@ -47,12 +47,12 @@ namespace AdafruitBME280WeatherStation
             _timer.Start();
         }
 
-        private void _timer_Tick(object sender, object e)
+        private async void _timer_Tick(object sender, object e)
         {
-            var temp = _bme280.ReadTemperature();
-            var humidity = _bme280.ReadHumidity();
-            var pressure = _bme280.ReadPressure();
-            var altitude = _bme280.ReadAltitude(seaLevelPressure);
+            var temp = await _bme280.ReadTemperature();
+            var humidity = await _bme280.ReadHumidity();
+            var pressure = await _bme280.ReadPressure();
+            var altitude = await _bme280.ReadAltitude(seaLevelPressure);
 
             Debug.WriteLine("Temp: {0} deg C", temp);
             Debug.WriteLine("Humidity: {0} %", humidity);
